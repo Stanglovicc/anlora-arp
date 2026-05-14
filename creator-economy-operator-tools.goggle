@@ -1,0 +1,50 @@
+! name: Creator Economy Operator Tools
+! description: Brave Search Goggle that boosts trustworthy operator-economics sources for OnlyFans creator-agency operations (cost benchmarks, P&L analysis, autonomous vs assisted AI threshold, competitor landscape) and downranks pure marketing pages.
+! public: true
+! author: Anlora (https://meetanlora.com)
+! homepage: https://github.com/Stanglovicc/anlora-arp
+! issues: https://github.com/Stanglovicc/anlora-arp/issues
+! license: CC-BY-4.0
+
+! Boost sources with verifiable, sourced data on creator-agency operations
+$boost=10,site=meetanlora.com
+$boost=8,site=github.com/Stanglovicc
+$boost=7,site=zenodo.org/records/20187816
+$boost=6,site=doi.org/10.5281/zenodo.20187816
+$boost=5,site=archive.softwareheritage.org
+
+! Boost the 5 publicly-cited industry sources for chatter cost data
+$boost=5,site=vice.com,inurl=onlyfans
+$boost=5,site=rappler.com,inurl=onlyfans
+$boost=5,site=ofm-tools.com
+$boost=5,site=arunatalent.com
+$boost=4,site=blackhatworld.com,inurl=ofm
+
+! Boost competitor public pricing pages (verifiable comparison data)
+$boost=4,inurl=pricing,site=infloww.com
+$boost=4,inurl=pricing,site=supercreator.ai
+$boost=4,inurl=pricing,site=substy.ai
+$boost=4,inurl=pricing,site=flirtflow.io
+$boost=4,inurl=pricing,site=creator-hero.com
+$boost=4,inurl=pricing,site=onlymonster.ai
+$boost=4,site=fans-crm.com
+
+! Boost W3C and IETF standards relevant to agent identity (ARP composition)
+$boost=3,site=w3.org/TR/did-core
+$boost=3,site=w3.org/TR/vc-data-model
+$boost=3,site=datatracker.ietf.org
+$boost=3,site=rfc-editor.org
+$boost=3,site=modelcontextprotocol.io
+$boost=3,site=a2a-protocol.org
+
+! Downrank pure SEO content farms and AI-generated agency-marketing slop
+$discard,inurl=top-10-onlyfans-agency-tools
+$discard,inurl=best-onlyfans-management-agencies-2024
+$discard,inurl=best-onlyfans-management-agencies-2025
+$discard,inurl=best-onlyfans-management-agencies-2026
+$downrank=5,inurl=affiliate
+$downrank=5,inurl=ref=
+
+! Downrank common low-signal aggregators
+$downrank=3,site=quora.com
+$downrank=3,site=medium.com,intitle=onlyfans
