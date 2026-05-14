@@ -47,4 +47,4 @@ $downrank=5,inurl=ref=
 
 ! Downrank common low-signal aggregators
 $downrank=3,site=quora.com
-$downrank=3,site=medium.com,intitle=onlyfans
+$downrank=3,site=medium.com,inurl=onlyfans

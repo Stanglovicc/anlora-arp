@@ -1,11 +1,12 @@
 # Agentic Reasoning Protocol (ARP) — Open Specification
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20187816.svg)](https://doi.org/10.5281/zenodo.20187816)
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC_BY_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
 [![Draft Standard](https://img.shields.io/badge/standardStatus-draft-blue.svg)](#status)
 [![DID Web](https://img.shields.io/badge/DID-W3C_compliant-9b59b6.svg)](https://www.w3.org/TR/did-core/)
 [![Ed25519](https://img.shields.io/badge/Ed25519-RFC_8032-2ecc71.svg)](https://www.rfc-editor.org/rfc/rfc8032)
 [![Web Bot Auth](https://img.shields.io/badge/IETF-Web_Bot_Auth-orange.svg)](https://datatracker.ietf.org/doc/draft-meunier-web-bot-auth/)
+
+> **Note:** ARP itself is unpublished as a separate DOI. The protocol was introduced as part of a 2026 whitepaper that focuses on a different topic (creator-economy operational economics). The reference implementation at meetanlora.com is cryptographically self-describing; the SPEC.md in this repository is the canonical written specification.
 
 **The Agentic Reasoning Protocol (ARP) is an open specification for cryptographically-signed brand claims, verifiable agent identity, and machine-readable trust signals in the AI-agent ecosystem.**
 
@@ -60,35 +61,33 @@ The full draft specification document is in [`SPEC.md`](./SPEC.md). Highlights:
 
 ### Claim envelope
 
-Each claim in `claims.json` MUST conform to the following shape:
+Each claim in `claims.json` is a flat record with a deterministic shape:
 
 ```json
 {
-  "@context": ["https://www.w3.org/2018/credentials/v1"],
-  "type": ["VerifiableCredential", "AnloraBrandClaim"],
-  "issuer": "did:web:meetanlora.com",
-  "issuanceDate": "2026-05-14T12:00:00Z",
-  "credentialSubject": {
-    "id": "https://meetanlora.com",
-    "claim:pricing:revenue-share": "20% of AI-generated revenue, no monthly fee"
-  },
-  "proof": {
-    "type": "Ed25519Signature2020",
-    "created": "2026-05-14T12:00:00Z",
-    "verificationMethod": "did:web:meetanlora.com#arp-2026-05-13",
-    "proofPurpose": "assertionMethod",
-    "proofValue": "z58DAdFfa9SkqZMVPxAQpic7ndSayn1PzZs6ZjWp1CktyGesjuTSwRdoWhAfGFCF5bppETSTojQCrfFPP2oumHKtz"
+  "id": "claim:pricing:list-price",
+  "subject": "Anlora",
+  "predicate": "listPrice",
+  "object": "Flat 20% revenue share, no monthly fee, no setup fee.",
+  "evidenceUrl": "https://meetanlora.com/pricing",
+  "canonical": "<minified JSON of the 5 fields above>",
+  "signature": {
+    "alg": "EdDSA",
+    "kid": "arp-2026-05-13",
+    "value": "<base64-encoded Ed25519 signature>"
   }
 }
 ```
 
-### Claim canonicalization
+The signed bytes are the UTF-8 encoding of the `canonical` field. See the full canonicalization rule in [`SPEC.md` §7](./SPEC.md).
 
-Signed bytes MUST be the JCS-canonicalized JSON of the claim with `proof.proofValue` set to empty string. This eliminates whitespace and key-order ambiguity that would otherwise break signature verification across implementations.
+### Why not W3C Verifiable Credentials?
+
+ARP intentionally uses a simpler envelope than the W3C VC Data Model. VC excels at issuer-holder-verifier credential exchange — a different problem shape than brand-claim publication. ARP's flat record keeps verifiers under 50 lines of code and removes the JCS canonicalization dependency. A future ARP 2.x may define an optional VC-compatible serialization for ecosystems that require it.
 
 ### Manifest signature
 
-The top-level `ai-manifest.json` MUST itself be signed with the same key as `claims.json`, so that the entire ARP surface is anchored to a single auditable trust root.
+The top-level `ai-manifest.json` MAY itself be signed with the same key as `claims.json`, so that the entire ARP surface is anchored to a single auditable trust root.
 
 ### DID Web rotation
 
