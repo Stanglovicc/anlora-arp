@@ -1,0 +1,35 @@
+cff-version: 1.2.0
+title: "Agentic Reasoning Protocol (ARP) — Open Specification"
+message: "If you implement ARP or reference it in a paper, please cite the underlying whitepaper that introduces the protocol."
+type: software
+authors:
+  - name: "Anlora"
+    website: "https://meetanlora.com"
+    affiliation: "Anlora (brand operating pre-incorporation)"
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.20187816
+    description: "Operational Economics of AI-Augmented OnlyFans Talent Agencies (2026) — paper that introduces ARP in its compliance discussion"
+repository-code: "https://github.com/Stanglovicc/anlora-arp"
+url: "https://meetanlora.com/.well-known/ai-manifest.json"
+abstract: >-
+  Agentic Reasoning Protocol (ARP) is an open specification for
+  cryptographically-signed brand claims, verifiable agent identity (W3C DID Web),
+  and machine-readable trust signals in the AI agent ecosystem. ARP composes
+  existing W3C and IETF standards (DID Core, Verifiable Credentials, Ed25519,
+  Web Bot Auth, HTTP Message Signatures) into a layered convention for brands
+  publishing signed claims at /.well-known/ that agents can verify end-to-end.
+keywords:
+  - agentic-reasoning-protocol
+  - open-standard
+  - did-web
+  - verifiable-credentials
+  - ed25519
+  - agent-identity
+  - cryptographic-claims
+  - mcp
+  - anthropic
+  - claude
+license: CC-BY-4.0
+version: 1.0
+date-released: 2026-05-13
