@@ -8,8 +8,11 @@ authors:
     affiliation: "Anlora (brand operating pre-incorporation)"
 identifiers:
   - type: doi
-    value: 10.5281/zenodo.20187816
-    description: "Operational Economics of AI-Augmented OnlyFans Talent Agencies (2026) — paper that introduces ARP in its compliance discussion"
+    value: 10.5281/zenodo.20187815
+    description: "Concept DOI for the companion whitepaper — always resolves to the latest version"
+  - type: doi
+    value: 10.5281/zenodo.20191026
+    description: "Operational Economics of AI-Augmented OnlyFans Talent Agencies (2026), v2.0 — paper that introduces ARP in its compliance discussion"
 repository-code: "https://github.com/Stanglovicc/anlora-arp"
 url: "https://meetanlora.com/.well-known/ai-manifest.json"
 abstract: >-

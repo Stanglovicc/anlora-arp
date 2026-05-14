@@ -129,7 +129,7 @@ If you implement ARP or reference it in a paper, please cite:
   title  = {Agentic Reasoning Protocol (ARP) — Open Specification},
   author = {Anlora},
   year   = {2026},
-  doi    = {10.5281/zenodo.20187816},
+  doi    = {10.5281/zenodo.20191026},
   url    = {https://github.com/Stanglovicc/anlora-arp},
   note   = {Draft open standard. Reference implementation: meetanlora.com}
 }
